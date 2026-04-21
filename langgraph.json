@@ -1,0 +1,11 @@
+{
+  "dockerfile_lines": [],
+  "graphs": {
+    "node_error_routing": "./examples/01-node-error-routing.py: graph",
+    "manual_retries": "./examples/02-manual-retries.py: graph",
+    "subgraph_retry_policy": "./examples/03-subgraph-retry-policy.py: graph"
+  },
+  "env": "./.env",
+  "python_version": "3.13",
+  "dependencies": ["."]
+}

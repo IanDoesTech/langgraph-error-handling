@@ -1,0 +1,11 @@
+{
+  "dockerfile_lines": [],
+  "graphs": {
+    "node_error_routing": "./studio_graphs.py:node_error_routing_graph",
+    "manual_retries": "./studio_graphs.py:manual_retries_graph",
+    "subgraph_retry_policy": "./studio_graphs.py:subgraph_retry_policy_graph"
+  },
+  "env": "./.env",
+  "python_version": "3.13",
+  "dependencies": ["."]
+}

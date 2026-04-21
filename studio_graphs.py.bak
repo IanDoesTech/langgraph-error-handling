@@ -1,0 +1,46 @@
+"""LangGraph Studio entrypoints for the local examples."""
+
+import importlib.util
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).parent
+LOCAL_MODULES = ("nodes", "state", "retry", "retried_subgraph")
+
+
+def _clear_local_modules() -> None:
+    for module_name in list(sys.modules):
+        if module_name in LOCAL_MODULES or module_name.startswith("nodes."):
+            del sys.modules[module_name]
+
+
+def _load_graph(example_path: str, module_name: str):
+    graph_path = ROOT / example_path / "graph.py"
+    _clear_local_modules()
+    sys.path.insert(0, str(graph_path.parent))
+    try:
+        spec = importlib.util.spec_from_file_location(module_name, graph_path)
+        if spec is None or spec.loader is None:
+            raise ImportError(f"Could not load graph module from {graph_path}")
+
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.graph
+    finally:
+        sys.path.pop(0)
+        _clear_local_modules()
+
+
+node_error_routing_graph = _load_graph(
+    "examples/01-node-error-routing",
+    "example_01_node_error_routing",
+)
+manual_retries_graph = _load_graph(
+    "examples/02-manual-retries",
+    "example_02_manual_retries",
+)
+subgraph_retry_policy_graph = _load_graph(
+    "examples/03-subgraph-retry-policy",
+    "example_03_subgraph_retry_policy",
+)
