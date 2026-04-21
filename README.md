@@ -40,6 +40,8 @@ uv run python examples/subgraph_retry_policy/run.py
 ```
 
 Each script prints the graph messages and the final error state.
+The retry example scripts run both a recovery path and an error-handler path so
+you can see the returned failure message from one command.
 
 Each example keeps graph wiring in `graph.py` and node implementations in a local
 `nodes/` folder. That mirrors the structure you would usually want in a real
@@ -113,7 +115,7 @@ For `subgraph_retry_policy`, use:
 The retry examples read `FAIL_FIRST_N_ATTEMPTS` from `.env`. The default value
 of `2` lets both retry examples recover. Set it above the retry limit, for
 example `5`, then restart `uv run langgraph dev` to inspect the error-handler
-path in Studio.
+path and returned failure message in Studio.
 
 ## Example 1: Node Error Routing
 
