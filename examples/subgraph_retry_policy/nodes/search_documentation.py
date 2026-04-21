@@ -1,5 +1,6 @@
 """Child-subgraph node that raises retryable transient failures."""
 
+import logging
 import os
 
 from dotenv import load_dotenv
@@ -7,6 +8,8 @@ from dotenv import load_dotenv
 from examples.subgraph_retry_policy.state import SearchState
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 
 class TemporarySearchError(Exception):
@@ -23,7 +26,7 @@ async def search_documentation(state: SearchState) -> dict:
 
     fail_first_n_attempts = int(os.getenv("FAIL_FIRST_N_ATTEMPTS", "2"))
     if attempt_counter <= fail_first_n_attempts:
-        print(f"[retried_subgraph] attempt {attempt_counter} failed")
+        logger.info("[retried_subgraph] attempt %s failed", attempt_counter)
         raise TemporarySearchError(
             f"simulated transient failure for attempt {attempt_counter}"
         )

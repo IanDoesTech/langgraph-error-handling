@@ -1,5 +1,6 @@
 """Search node that implements retries directly in application code."""
 
+import logging
 import os
 from typing import Literal
 
@@ -14,6 +15,7 @@ load_dotenv()
 
 NODE_NAME = "search_documentation"
 MAX_ATTEMPTS = 3
+logger = logging.getLogger(__name__)
 
 RouterDestination = Literal["error_handler", "answer_user"]
 
@@ -47,7 +49,12 @@ async def search_documentation(state: State) -> Command[RouterDestination]:
             },
         )
     except Exception as exc:
-        print(f"[{NODE_NAME}] retries exhausted: {type(exc).__name__}: {exc}")
+        logger.info(
+            "[%s] retries exhausted: %s: %s",
+            NODE_NAME,
+            type(exc).__name__,
+            exc,
+        )
         return Command(
             goto="error_handler",
             update={

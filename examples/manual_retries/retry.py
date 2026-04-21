@@ -1,10 +1,12 @@
 """Small retry helper used by the manual retry example."""
 
 import asyncio
+import logging
 from collections.abc import Awaitable, Callable
 from typing import TypeVar
 
 T = TypeVar("T")
+logger = logging.getLogger(__name__)
 
 
 async def retry_async(
@@ -22,7 +24,7 @@ async def retry_async(
             return await operation(attempt), attempt
         except retry_exceptions as exc:
             last_error = exc
-            print(f"[manual_retry] attempt {attempt} failed: {exc}")
+            logger.info("[manual_retry] attempt %s failed: %s", attempt, exc)
             if attempt == max_attempts:
                 break
             await asyncio.sleep(initial_delay_seconds * attempt)

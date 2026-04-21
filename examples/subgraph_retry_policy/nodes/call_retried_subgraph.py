@@ -1,5 +1,6 @@
 """Parent graph node that catches exhausted child-subgraph retries."""
 
+import logging
 from typing import Literal
 
 from langchain_core.messages import AIMessage
@@ -10,6 +11,7 @@ from examples.subgraph_retry_policy.retried_subgraph import retried_subgraph
 from examples.subgraph_retry_policy.state import State, create_workflow_error
 
 NODE_NAME = "call_retried_subgraph"
+logger = logging.getLogger(__name__)
 
 RouterDestination = Literal["error_handler", "answer_user"]
 
@@ -32,7 +34,12 @@ async def call_retried_subgraph(state: State) -> Command[RouterDestination]:
             },
         )
     except Exception as exc:
-        print(f"[{NODE_NAME}] subgraph failed after retries: {type(exc).__name__}: {exc}")
+        logger.info(
+            "[%s] subgraph failed after retries: %s: %s",
+            NODE_NAME,
+            type(exc).__name__,
+            exc,
+        )
         return Command(
             goto="error_handler",
             update={
