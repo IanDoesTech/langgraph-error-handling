@@ -13,7 +13,7 @@ def print_result(label: str, result: dict) -> None:
     print(f"\n== {label} ==")
     for message in result["messages"]:
         print(f"- {message.content}")
-    print(f"error: {result.get('error')}")
+    print(f"final error state: {result.get('error')}")
 
 
 async def main() -> None:

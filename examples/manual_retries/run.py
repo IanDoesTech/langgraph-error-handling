@@ -15,7 +15,7 @@ def print_result(label: str, result: dict) -> None:
     for message in result["messages"]:
         print(f"- {message.content}")
     print(f"attempts: {result['attempts']}")
-    print(f"error: {result.get('error')}")
+    print(f"final error state: {result.get('error')}")
 
 
 async def run_example(*, fail_first_n_attempts: int) -> dict:

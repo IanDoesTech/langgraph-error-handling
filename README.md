@@ -42,6 +42,8 @@ uv run python examples/subgraph_retry_policy/run.py
 Each script prints the graph messages and the final error state.
 The retry example scripts run both a recovery path and an error-handler path so
 you can see the returned failure message from one command.
+The final error state is `None` on handled failures because the error handler
+turns the internal workflow error into a user-facing message, then clears it.
 
 Each example keeps graph wiring in `graph.py` and node implementations in a local
 `nodes/` folder. That mirrors the structure you would usually want in a real
