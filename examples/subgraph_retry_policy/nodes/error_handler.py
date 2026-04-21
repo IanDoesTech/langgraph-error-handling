@@ -9,7 +9,7 @@ from examples.subgraph_retry_policy.state import State
 logger = logging.getLogger(__name__)
 
 ERROR_MESSAGE = (
-    "Sorry, documentation search failed after retries. "
+    "Sorry, something went wrong while processing your latest submission. "
     "The issue has been reported to support."
 )
 

@@ -9,7 +9,7 @@ from examples.node_error_routing.state import State
 logger = logging.getLogger(__name__)
 
 ERROR_MESSAGE = (
-    "Sorry, something went wrong while drafting the summary. "
+    "Sorry, something went wrong while processing your latest submission. "
     "The issue has been reported to support."
 )
 

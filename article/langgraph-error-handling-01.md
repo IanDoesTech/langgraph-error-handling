@@ -67,7 +67,7 @@ from agents.content_processor.state import State
 from agents.content_processor.config import logger
 
 NODE_NAME = "error_handler"
-ERROR_MESSAGE = "Sorry, something went wrong while processing your content. I have reported the issue to our support team."
+ERROR_MESSAGE = "Sorry, something went wrong while processing your latest submission. The issue has been reported to support."
 
 async def error_handler(state: State):
     """Handle errors"""

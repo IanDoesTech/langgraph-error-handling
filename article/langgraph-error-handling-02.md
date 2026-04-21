@@ -87,7 +87,7 @@ from langchain_core.messages import AIMessage
 
 
 ERROR_MESSAGE = (
-    "Sorry, something went wrong while drafting the summary. "
+    "Sorry, something went wrong while processing your latest submission. "
     "The issue has been reported to support."
 )
 
