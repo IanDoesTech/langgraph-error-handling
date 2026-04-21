@@ -30,7 +30,7 @@ In a production app, I usually want the user to get a graceful message and I wan
 
 ### Unexpected errors
 
-Letting unexpected errors bubble up is great in development. It is less comforting when an edge case sneaks into production.
+Letting unexpected errors bubble up is great in development. It's less comforting when an edge case sneaks into production.
 
 There are still errors you should let crash loudly. But when a node is performing ordinary application work and any failure should become the same user-facing failure path, I prefer to route the graph to a dedicated error handler.
 
@@ -155,8 +155,8 @@ Well spotted! That basic node-routing example is not a replacement for retries. 
 
 The repo includes two retry examples:
 
-1. [`examples/manual_retries`](https://github.com/IanDoesTech/langgraph-error-handling/tree/main/examples/manual_retries)
-2. [`examples/subgraph_retry_policy`](https://github.com/IanDoesTech/langgraph-error-handling/tree/main/examples/subgraph_retry_policy)
+1. [`examples/manual_retries`](https://github.com/IanDoesTech/langgraph-error-handling/tree/master/examples/manual_retries)
+2. [`examples/subgraph_retry_policy`](https://github.com/IanDoesTech/langgraph-error-handling/tree/master/examples/subgraph_retry_policy)
 
 Both examples use deterministic fake services, so you can run the success and exhausted-retry paths without an LLM provider key or external API.
 
