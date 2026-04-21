@@ -11,7 +11,7 @@ The examples are intentionally narrower than a production agent. They focus on t
 
 ## Requirements
 
-- Python 3.11+
+- Python 3.13+
 - [uv](https://docs.astral.sh/uv/)
 
 No LLM provider key is required. The examples use deterministic fake services so you can see success, retry, and failure behavior without external APIs.
@@ -44,6 +44,76 @@ Each script prints the graph messages and the final error state.
 Each example keeps graph wiring in `graph.py` and node implementations in a local
 `nodes/` folder. That mirrors the structure you would usually want in a real
 agent while keeping each example self-contained.
+
+## Try The Examples In LangGraph Studio
+
+The repository includes `langgraph.json`, so LangGraph Studio can load all three
+example graphs directly:
+
+- `node_error_routing`
+- `manual_retries`
+- `subgraph_retry_policy`
+
+Start the local LangGraph development server from the repository root:
+
+```bash
+uv run langgraph dev
+```
+
+The CLI opens LangGraph Studio in your browser. If it does not open
+automatically, use the Studio URL printed by the command. In Studio, select one
+of the graph IDs above, create a thread, and invoke it with one of these inputs.
+
+For `node_error_routing`, use a normal topic to see the success path:
+
+```json
+{
+  "messages": [],
+  "topic": "LangGraph error handling",
+  "draft": null,
+  "error": null
+}
+```
+
+Set `topic` to a value containing `fail` to see the graph route to
+`error_handler`:
+
+```json
+{
+  "messages": [],
+  "topic": "fail this node",
+  "draft": null,
+  "error": null
+}
+```
+
+For `manual_retries`, use:
+
+```json
+{
+  "messages": [],
+  "query": "How do I handle LangGraph node errors?",
+  "result": null,
+  "attempts": 0,
+  "error": null
+}
+```
+
+For `subgraph_retry_policy`, use:
+
+```json
+{
+  "messages": [],
+  "query": "How do I use RetryPolicy in LangGraph?",
+  "result": null,
+  "error": null
+}
+```
+
+The retry examples read `FAIL_FIRST_N_ATTEMPTS` from `.env`. The default value
+of `2` lets both retry examples recover. Set it above the retry limit, for
+example `5`, then restart `uv run langgraph dev` to inspect the error-handler
+path in Studio.
 
 ## Example 1: Node Error Routing
 
