@@ -7,3 +7,6 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+
+# LangGraph Studio runtime state
+.langgraph_api/
