@@ -4,7 +4,7 @@ import os
 
 from dotenv import load_dotenv
 
-from state import SearchState
+from examples.subgraph_retry_policy.state import SearchState
 
 load_dotenv()
 

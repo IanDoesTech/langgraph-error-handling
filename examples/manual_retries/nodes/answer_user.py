@@ -2,7 +2,7 @@
 
 from langchain_core.messages import AIMessage
 
-from state import State
+from examples.manual_retries.state import State
 
 
 async def answer_user(state: State) -> dict:

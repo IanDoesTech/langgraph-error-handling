@@ -2,7 +2,7 @@
 
 from langchain_core.messages import AIMessage
 
-from state import State
+from examples.node_error_routing.state import State
 
 
 async def publish_summary(state: State) -> dict:

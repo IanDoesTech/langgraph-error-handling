@@ -1,6 +1,6 @@
 import asyncio
 
-from graph import graph
+from examples.node_error_routing.graph import graph
 
 
 def print_result(label: str, result: dict) -> None:

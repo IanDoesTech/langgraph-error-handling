@@ -1,23 +1,21 @@
 import asyncio
 
-from graph import graph
+from examples.subgraph_retry_policy.graph import graph
 
 
 async def main() -> None:
     result = await graph.ainvoke(
         {
             "messages": [],
-            "query": "How do I handle LangGraph node errors?",
+            "query": "How do I use RetryPolicy in LangGraph?",
             "result": None,
-            "attempts": 0,
             "error": None,
         }
     )
 
-    print("\n== manual retry example ==")
+    print("\n== subgraph retry policy example ==")
     for message in result["messages"]:
         print(f"- {message.content}")
-    print(f"attempts: {result['attempts']}")
     print(f"error: {result.get('error')}")
 
 

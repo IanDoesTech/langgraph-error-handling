@@ -1,17 +1,17 @@
-"""User-facing error handler for exhausted child-subgraph retries."""
+"""User-facing error handler for graph failures."""
 
 from langchain_core.messages import AIMessage
 
-from state import State
+from examples.node_error_routing.state import State
 
 ERROR_MESSAGE = (
-    "Sorry, documentation search failed after retries. "
+    "Sorry, something went wrong while drafting the summary. "
     "The issue has been reported to support."
 )
 
 
 async def error_handler(state: State) -> dict:
-    """Report the child graph failure to the user and clear the workflow error."""
+    """Report a friendly failure message and clear the workflow error."""
     print(f"[error_handler] handled error: {state['error']}")
     return {
         "messages": [AIMessage(content=ERROR_MESSAGE)],

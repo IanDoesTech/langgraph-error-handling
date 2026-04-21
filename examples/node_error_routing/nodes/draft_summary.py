@@ -5,7 +5,7 @@ from typing import Literal
 from langchain_core.messages import AIMessage
 from langgraph.types import Command
 
-from state import State, create_workflow_error
+from examples.node_error_routing.state import State, create_workflow_error
 
 NODE_NAME = "draft_summary"
 

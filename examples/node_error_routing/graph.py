@@ -2,10 +2,10 @@
 
 from langgraph.graph import END, START, StateGraph
 
-from nodes.draft_summary import draft_summary
-from nodes.error_handler import error_handler
-from nodes.publish_summary import publish_summary
-from state import State
+from examples.node_error_routing.nodes.draft_summary import draft_summary
+from examples.node_error_routing.nodes.error_handler import error_handler
+from examples.node_error_routing.nodes.publish_summary import publish_summary
+from examples.node_error_routing.state import State
 
 workflow = StateGraph(State)
 workflow.add_node("draft_summary", draft_summary)

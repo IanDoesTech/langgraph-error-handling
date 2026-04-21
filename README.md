@@ -34,9 +34,9 @@ Set `FAIL_FIRST_N_ATTEMPTS` higher than the retry limit to see the graph route t
 ## Run The Examples
 
 ```bash
-uv run python examples/01-node-error-routing/run.py
-uv run python examples/02-manual-retries/run.py
-uv run python examples/03-subgraph-retry-policy/run.py
+uv run python examples/node_error_routing/run.py
+uv run python examples/manual_retries/run.py
+uv run python examples/subgraph_retry_policy/run.py
 ```
 
 Each script prints the graph messages and the final error state.
@@ -47,7 +47,7 @@ agent while keeping each example self-contained.
 
 ## Example 1: Node Error Routing
 
-Path: `examples/01-node-error-routing`
+Path: `examples/node_error_routing`
 
 This is the core pattern:
 
@@ -69,7 +69,7 @@ Do not put raw exception objects in graph state. State may be checkpointed, stre
 
 ## Example 2: Manual Retries
 
-Path: `examples/02-manual-retries`
+Path: `examples/manual_retries`
 
 This example keeps retry control inside the node. It is useful when you want application-level control over:
 
@@ -82,7 +82,7 @@ After retry exhaustion, the node routes to `error_handler` the same way as the f
 
 ## Example 3: Subgraph Retry Policy
 
-Path: `examples/03-subgraph-retry-policy`
+Path: `examples/subgraph_retry_policy`
 
 This example uses LangGraph's `RetryPolicy` in a child graph:
 

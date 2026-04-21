@@ -1,9 +1,9 @@
 {
   "dockerfile_lines": [],
   "graphs": {
-    "node_error_routing": "./examples/01-node-error-routing.py: graph",
-    "manual_retries": "./examples/02-manual-retries.py: graph",
-    "subgraph_retry_policy": "./examples/03-subgraph-retry-policy.py: graph"
+    "node_error_routing": "./examples/node_error_routing/graph.py:graph",
+    "manual_retries": "./examples/manual_retries/graph.py:graph",
+    "subgraph_retry_policy": "./examples/subgraph_retry_policy/graph.py:graph"
   },
   "env": "./.env",
   "python_version": "3.13",

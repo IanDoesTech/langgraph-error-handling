@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 from langchain_core.messages import AIMessage
 from langgraph.types import Command
 
-from retry import retry_async
-from state import State, create_workflow_error
+from examples.manual_retries.retry import retry_async
+from examples.manual_retries.state import State, create_workflow_error
 
 load_dotenv()
 
