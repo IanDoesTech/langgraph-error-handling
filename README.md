@@ -1,6 +1,6 @@
 # LangGraph Error Handling Examples
 
-This repository contains small, runnable examples for the error handling patterns discussed in the article **Better error handling in LangGraph**.
+This repository contains small, runnable examples for the error handling patterns discussed in the article [When LangGraph Fails, Your UX Shouldn’t: Designing Graceful Error Handling](https://www.iandoestech.com/blog/langgraph-error-handling).
 
 The examples are intentionally narrower than a production agent. They focus on the graph patterns:
 
