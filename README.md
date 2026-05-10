@@ -1,5 +1,7 @@
 # LangGraph Error Handling Examples
 
+Before you go any further, check whether there has been progress on this LangGraph feature request: [More robust error handling for nodes #6170](https://github.com/langchain-ai/langgraph/issues/6170). If it has been resolved, LangGraph may now have a first-class answer to the problem these examples work around.
+
 This repository contains small, runnable examples for the error handling patterns discussed in the article [When LangGraph Fails, Your UX Shouldn’t: Designing Graceful Error Handling](https://www.iandoestech.com/blog/langgraph-error-handling).
 
 The examples are intentionally narrower than a production agent. They focus on the graph patterns:
